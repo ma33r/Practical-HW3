@@ -18,7 +18,7 @@ from secrets import (
 PINATA_GATEWAY = "https://gateway.pinata.cloud/ipfs/"
 
 # fill me out
-ASSET_ID = 81776768
+ASSET_ID = 82430632
 
 def serve_image(request):
     # TODO modify this function to:
@@ -30,7 +30,7 @@ def serve_image(request):
     ipfs_md_address = query['params']['url']
 
     # 3. Query the metadata from IPFS
-    md_cid = ipfs_md_address[11:]
+    md_cid = ipfs_md_address[7:]
     url = 'https://gateway.pinata.cloud/ipfs/' + md_cid
 
     response = requests.get(url)
@@ -42,7 +42,7 @@ def serve_image(request):
     image_address = response_dict["image"]
 
     # 5. Query the image from IPFS
-    image_cid = image_address[11:]
+    image_cid = image_address[7:]
     image_url = 'https://gateway.pinata.cloud/ipfs/' + image_cid
 
     image_response = requests.get(image_url)

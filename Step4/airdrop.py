@@ -39,7 +39,7 @@ def main():
     url = "https://distracted-varahamihira-80f55c.netlify.app/.netlify/functions/approval"
 
     body = {
-        "asset_id" : 81776768,
+        "asset_id":82592770,
     }
 
     response = requests.post(url, json=body)
@@ -56,7 +56,7 @@ def main():
         sp=params,
         receiver="UAHTM3EC3PTNDYBA5AGPHVBMXOK4YQE3N23VQEUFAMTHY3AXHBUXDHIWKE",
         amt=0,
-        index=81776768)
+        index=82592770)
     stxn = txn.sign(account_private_key)
 
     try:

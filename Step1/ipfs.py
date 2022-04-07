@@ -41,10 +41,10 @@ def pin_image_to_ipfs(file_path):
     response = requests.post(url, files=files, headers=PINATA_HEADERS)
 
     # examine response extract out the IpfsHash (this is the CID). Return it
-    print(response)
+    # print(response)
     response_dict = response.json()
-    print(response_dict)
-    return response_dict["IpfsHash"]
+    # print(response_dict)
+    return response_dict['IpfsHash']
 
 
 def pin_metadata_to_ipfs(metadata):
@@ -54,10 +54,11 @@ def pin_metadata_to_ipfs(metadata):
     response = requests.post(url, json=metadata, headers=PINATA_HEADERS)
 
     # examine response extract out the IpfsHash (this is the CID). Return it
-    print(response)
+    # print(response)
     response_dict = response.json()
-    print(response_dict)
-    return response_dict["IpfsHash"]
+    # print(response_dict)
+    # print(response_dict['IpfsHash'])
+    return response_dict['IpfsHash']
 
 
 def compute_integrity(ipfs_image_cid):
@@ -84,7 +85,7 @@ def main():
     image_cid = pin_image_to_ipfs(absolute_path)
 
     # convert the IPFS CID it returns to an IPFS address
-    image_ipfsaddress = "ipfs://CID/" + image_cid
+    image_ipfsaddress = "ipfs://" + image_cid
 
     # compute the integrity
     image_integrity = compute_integrity(image_cid)
@@ -104,7 +105,7 @@ def main():
     metadata_cid = pin_metadata_to_ipfs(metadata)
 
     # convert the IPFS CID it returns to an IPFS address
-    metadata_ipfsaddress = "ipfs://CID/" + metadata_cid
+    metadata_ipfsaddress = "ipfs://" + metadata_cid
 
     # compute metadata hash
     metadata_hash = compute_metadata_hash(metadata)
